@@ -25,11 +25,12 @@ services:
   backend:
     container_name: backend
     image: deniskublitskiy/hcs-challenge-backend:develop
+    depends_on:
+      - mongo
     build: ../
     ports:
       - 5555:5000
     restart: always
-
     environment:
       MONGO_URI: mongodb://common-mongo/hcs-test
       NODE_ENV: development
