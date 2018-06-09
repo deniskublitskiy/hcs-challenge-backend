@@ -24,7 +24,7 @@ services:
   backend:
     depends_on:
       - mongo
-    image: deniskublitskiy/hcs-test-backend:develop
+    image: deniskublitskiy/hcs-challenge-backend:develop
     build: ../
     ports:
       - 3333:5000

@@ -1,5 +1,5 @@
 {
-  "name": "hcs-test-backend",
+  "name": "hcs-challenge-backend",
   "version": "0.0.1",
   "dependencies": {
     "bcrypt": "^2.0.1",

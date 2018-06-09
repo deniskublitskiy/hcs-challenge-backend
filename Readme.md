@@ -1,0 +1,1 @@
+[![CircleCI](https://circleci.com/gh/deniskublitskiy/hcs-challenge-backend/tree/develop.svg?style=svg)](https://circleci.com/gh/deniskublitskiy/hcs-challenge-backend/tree/develop)
