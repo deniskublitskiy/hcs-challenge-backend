@@ -1,0 +1,33 @@
+{
+  "name": "hcs-test-backend",
+  "version": "0.0.1",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.3",
+    "express-bearer-token": "^2.1.1",
+    "express-validator": "^5.2.0",
+    "faker": "^4.1.0",
+    "http-status-codes": "^1.3.0",
+    "jsonwebtoken": "^8.2.2",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.1.4",
+    "morgan": "^1.9.0",
+    "winston": "^3.0.0-rc6"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.1.0"
+  },
+  "scripts": {
+    "start": "node ./src app",
+    "stop": "killall app",
+    "seeds": "node ./seeds"
+  }
+}
