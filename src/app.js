@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const errorHandler = require('errorhandler');
+const { errorHandler } = require('./utils/express/errorHandler');
 const bearerToken = require('express-bearer-token');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const authRouter = require('./userManagement/routes/auth');
 const usersRouter = require('./userManagement/routes/users');
@@ -14,6 +15,7 @@ const app = express();
 
 app.disable('x-powered-by');
 
+app.use(cors());
 app.use(bearerToken());
 app.use(morgan('short'));
 app.use(bodyParser.json());
@@ -23,8 +25,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', AuthService.verify, usersRouter);
 app.use('/api/tasks', AuthService.verify, tasksRouter);
 
-if (process.env.NODE_ENV === 'development') {
-    app.use(errorHandler());
-}
+
+app.use(errorHandler);
 
 module.exports = { app };

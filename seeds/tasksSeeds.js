@@ -5,8 +5,8 @@ const { Task } = require('../src/taskManagement/models/Task');
 
 const getTasks = (count, usersIds) => times(count, () => ({
     userId: sample(usersIds),
-    title: faker.lorem.words(),
-    description: faker.lorem.text(),
+    title: faker.lorem.words(5),
+    description: faker.lorem.text(25),
     isDone: faker.random.boolean(),
     dueDate: faker.date.future(),
 }));

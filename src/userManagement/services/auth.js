@@ -28,14 +28,24 @@ class AuthService {
         const user = await User.findOne(query, 'password jwtSecret');
 
         if (!user) {
-            res.sendStatus(HttpStatus.UNAUTHORIZED);
+            res.status(HttpStatus.BAD_REQUEST).json({
+                errors: [{
+                    code: 'INVALID_NAME',
+                    message: 'Invalid name',
+                }],
+            });
             return;
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
-            res.sendStatus(HttpStatus.UNAUTHORIZED);
+            res.status(HttpStatus.BAD_REQUEST).json({
+                errors: [{
+                    code: 'INVALID_PASSWORD',
+                    message: 'Invalid password',
+                }],
+            });
             return;
         }
 

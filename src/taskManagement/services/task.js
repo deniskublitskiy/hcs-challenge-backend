@@ -18,24 +18,19 @@ class TaskService {
 
     static async getAll(req, res) {
         const query = { userId: req.user.id };
-        const tasks = await Task.find(query);
+        const tasks = await Task.find(query).sort({ createdAt: -1 });
 
-        if (tasks && tasks.length) {
-            res.status(HttpStatus.OK).json(tasks);
-            return;
-        }
-
-        res.sendStatus(HttpStatus.NOT_FOUND);
+        res.status(HttpStatus.OK).json(tasks);
     }
 
     static async create(req, res) {
         const payload = {
-            ...pick(req.body, ['title', 'dueDate']),
+            ...pick(req.body, ['title', 'dueDate', 'description']),
             userId: req.user.id,
         };
 
-        const task = new Task(payload);
-        await task.save();
+        let task = new Task(payload);
+        task = await task.save();
 
         res.status(HttpStatus.CREATED).json(task);
     }

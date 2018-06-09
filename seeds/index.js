@@ -35,6 +35,7 @@ const start = async () => {
         logger.info('Seeding tasks...');
         const tasks = await tasksSeeds(map(users, '_id'));
         logger.info(`${tasks.length} tasks created`);
+        process.exit(0);
     } catch (e) {
         logger.error(e);
     }

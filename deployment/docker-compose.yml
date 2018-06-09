@@ -3,6 +3,7 @@ version: '3.6'
 networks:
   global:
     external: true
+    driver: bridge
 
 volumes:
   mongo-data:
@@ -13,7 +14,7 @@ services:
     container_name: mongo
     image: mongo:3.6.4
     ports:
-      - 27020:27017/tcp
+      - 27018:27017/tcp
     volumes:
       - mongo-data:/data/db
     networks:
@@ -22,17 +23,33 @@ services:
           - common-mongo
 
   backend:
-    depends_on:
-      - mongo
+    container_name: backend
     image: deniskublitskiy/hcs-challenge-backend:develop
     build: ../
     ports:
-      - 3333:5000
-    command: npm run seeds
+      - 5555:5000
+    restart: always
+
     environment:
-      MONGO_URI: mongodb://mongo/hcs-test
+      MONGO_URI: mongodb://common-mongo/hcs-test
       NODE_ENV: development
       SERVICE_PORT: 5000
       TOKEN_EXPIRY: 7d
+    command: sh -c "npm run seeds && npm start"
+    networks:
+      - global
+
+  frontend:
+    container_name: frontend
+    image: deniskublitskiy/hcs-challenge-frontend-react:develop
+    depends_on:
+      - backend
+    build: ../../hcs-challenge-frontend-react
+    ports:
+      - 3333:5000
+    restart: always
+    environment:
+      PORT: 5000
+      REACT_APP_API_URL: http://localhost:5555/api
     networks:
       - global
