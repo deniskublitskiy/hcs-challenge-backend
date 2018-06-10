@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const { logger } = require('./utils/logger');
 const { app } = require('./app');
 
-const { SERVICE_PORT = 3000, MONGO_URI, RUN_SEEDS } = process.env;
+const { PORT = 3000, MONGO_URI } = process.env;
 
 let server = null;
 
@@ -39,8 +39,8 @@ const start = async () => {
         });
         logger.info('Connected to Mongo');
 
-        server = app.listen(SERVICE_PORT, () => {
-            logger.info(`Service started on port ${SERVICE_PORT}`);
+        server = app.listen(PORT, () => {
+            logger.info(`Service started on port ${PORT}`);
         });
     } catch (e) {
         setTimeout(start, 2000);
