@@ -2,6 +2,7 @@ const HttpStatus = require('http-status-codes');
 const pick = require('lodash/pick');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const { User } = require('../models/User');
 
@@ -56,6 +57,17 @@ class AuthService {
         const response = { token };
 
         res.status(HttpStatus.OK).json(response);
+    }
+
+    static async logOut(req, res) {
+        const payload = { jwtSecret: crypto.randomBytes(256).toString('hex') };
+        const user = await User.findByIdAndUpdate(req.user.id, payload);
+
+        if (!user) {
+            res.sendStatus(HttpStatus.NOT_FOUND);
+        }
+
+        res.sendStatus(HttpStatus.OK);
     }
 
     static async verify(req, res, next) {

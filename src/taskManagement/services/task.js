@@ -38,6 +38,7 @@ class TaskService {
     static async update(req, res) {
         const payload = pick(req.body, ['title', 'isDone', 'dueDate']);
         const query = { userId: req.user.id, _id: req.params.id };
+
         const task = await Task.findOneAndUpdate(query, payload);
 
         if (task) {
