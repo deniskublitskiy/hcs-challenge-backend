@@ -32,7 +32,7 @@ services:
       - 5555:5000
     restart: always
     environment:
-      MONGO_URI: mongodb://common-mongo/hcs-test
+      MONGO_URI: mongodb://admin:administrator12345@ds253960.mlab.com:53960/hcs
       NODE_ENV: development
       SERVICE_PORT: 5000
       TOKEN_EXPIRY: 7d
