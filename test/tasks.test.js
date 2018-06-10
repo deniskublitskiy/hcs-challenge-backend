@@ -1,7 +1,8 @@
-const server = require('../src/index');
 const chai = require('chai');
 const request = require('supertest');
 const HttpStatus = require('http-status-codes');
+
+const server = require('../src/index');
 
 const { expect } = chai;
 

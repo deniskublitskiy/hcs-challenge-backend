@@ -29,6 +29,7 @@
   "scripts": {
     "start": "node ./src app",
     "stop": "killall app",
-    "seeds": "node ./seeds"
+    "seeds": "node ./seeds",
+    "test": "npx mocha"
   }
 }
