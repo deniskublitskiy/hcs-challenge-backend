@@ -3,7 +3,6 @@ version: '3.6'
 networks:
   global:
     external: true
-    driver: bridge
 
 volumes:
   mongo-data:
@@ -27,6 +26,7 @@ services:
     image: deniskublitskiy/hcs-challenge-backend:develop
     depends_on:
       - mongo
+
     build: ../
     ports:
       - 5555:5000

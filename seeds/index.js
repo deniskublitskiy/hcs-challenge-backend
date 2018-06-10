@@ -37,6 +37,7 @@ const start = async () => {
         logger.info(`${tasks.length} tasks created`);
         process.exit(0);
     } catch (e) {
+        setTimeout(start, 1000);
         logger.error(e);
     }
 };
