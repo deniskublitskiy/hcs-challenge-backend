@@ -4,6 +4,10 @@
 
 API for task management.
 
+## Demo 
+
+[Demo](https://hcs-test.herokuapp.com/)
+
 ## Getting started
 
 Frontend is located in separate [repo](https://github.com/deniskublitskiy/hcs-challenge-frontend-react).
