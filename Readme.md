@@ -8,9 +8,21 @@ API for task management.
 
 Frontend is located in separate [repo](https://github.com/deniskublitskiy/hcs-challenge-frontend-react).
 
-###
-
 ### Installing
+
+```
+npm i
+```
+
+Create `.env` file with environment variables like `.env.example`.
+
+Start server: 
+
+```
+npm start
+```
+
+### Starting
 
 Move to _deployment_ folder
 
